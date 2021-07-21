@@ -1,49 +1,58 @@
-import React, {useRef} from 'react';
-import {View, Text, StyleSheet, Animated} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import React from 'react';
+import {View, StyleSheet, Animated, Easing} from 'react-native';
+import useAnimations from '../hooks/useAnimations';
+import ButtonAnimation from '../components/ButtonAnimation';
 
 const Animation101Screen = () => {
-  const opacity = useRef(new Animated.Value(0.2)).current;
-
-  const fadeIn = () => {
-    Animated.timing(opacity, {
-      toValue: 1,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const fadeOut = () => {
-    Animated.timing(opacity, {
-      toValue: 0.2,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-  };
+  const {opacity, position, fadeIn, fadeOut, easing, startMoving} =
+    useAnimations();
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={{...styles.orangeBox, opacity}} />
-      <View style={styles.containerBtns}>
-        <TouchableOpacity onPress={fadeOut} style={styles.btnFadeIn}>
-          <Text style={{color: '#ee6c4d', fontWeight: 'bold'}}>FadeOut</Text>
-        </TouchableOpacity>
+    <View style={styles101.container}>
+      <Animated.View
+        style={{
+          ...styles101.orangeBox,
+          opacity,
+          transform: [
+            {
+              translateY: position,
+            },
+          ],
+        }}
+      />
 
-        <TouchableOpacity
-          onPress={fadeIn}
-          style={{
-            ...styles.btnFadeIn,
-            backgroundColor: '#ee6c4d',
-            borderColor: '#293241',
-          }}>
-          <Text style={{color: '#293241', fontWeight: 'bold'}}>FadeIn</Text>
-        </TouchableOpacity>
+      <View style={styles101.containerBtns}>
+        <ButtonAnimation animation={fadeOut} textBtn="FadeOut" />
+
+        <ButtonAnimation
+          animation={fadeIn}
+          textBtn="FadeIn"
+          color="#ee6c4d"
+          backgroundC="#293241"
+          borderC="#ee6c4d"
+        />
+
+        <ButtonAnimation
+          textBtn="Restart"
+          animation={() => startMoving(-100)}
+          color="#98c1d9"
+          backgroundC="#3d5a80"
+          borderC="#98c1d9"
+        />
+
+        <ButtonAnimation
+          textBtn="Easing"
+          animation={easing}
+          color="#3d5a80"
+          backgroundC="#e0fbfc"
+          borderC="#3d5a80"
+        />
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+export const styles101 = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -62,6 +71,11 @@ const styles = StyleSheet.create({
   containerBtns: {
     marginTop: 15,
     flexDirection: 'row',
+  },
+
+  textBtn: {
+    color: '#ee6c4d',
+    fontWeight: 'bold',
   },
 
   btnFadeIn: {
