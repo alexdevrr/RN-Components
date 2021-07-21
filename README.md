@@ -21,3 +21,5 @@ And more!
 <img src="src/img/progress-1.png" alt="muestra" width=300>
 <hr>
 <img src="src/img/progress-2.png" alt="muestra" width=300>
+<hr>
+<img src="src/img/progress-3.png" alt="muestra" width=300>

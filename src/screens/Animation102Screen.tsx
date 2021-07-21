@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import {View, StyleSheet, Animated, PanResponder} from 'react-native';
+import {colors} from '../themes/appTheme';
 
 const Animation102Screen = () => {
   const pan = useRef(new Animated.ValueXY()).current;
@@ -41,12 +42,12 @@ const styles = StyleSheet.create({
   },
 
   blueDarkBox: {
-    backgroundColor: '#293241',
+    backgroundColor: colors.blueDark,
     width: 150,
     height: 150,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: '#ee6c4d',
+    borderColor: colors.orange,
   },
 });
 

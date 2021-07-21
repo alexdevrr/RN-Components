@@ -1,34 +1,12 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {styles} from '../themes/appTheme';
+import {View, FlatList} from 'react-native';
 import FlatListMenuItem from '../components/FlatListMenuItem';
 
-const menuItems = [
-  {
-    name: 'Animation 101',
-    icon: 'cube-outline',
-    component: 'Animation101Screen',
-  },
-  {
-    name: 'Animation 102',
-    icon: 'earth-outline',
-    component: 'Animation102Screen',
-  },
-];
+import {menuItems} from '../data/menuItem';
+import ListHeader from '../components/ListHeader';
+import {styles} from '../themes/appTheme';
 
 const HomeScreen = () => {
-  const {top} = useSafeAreaInsets();
-
-  // Render an objet for the list
-  const renderListHeader = () => {
-    return (
-      <View>
-        <Text style={{...styles.title, marginBottom: 20}}>Menu options</Text>
-      </View>
-    );
-  };
-
   const itemSeparator = () => {
     return (
       <View
@@ -42,12 +20,15 @@ const HomeScreen = () => {
   };
 
   return (
-    <View style={{...styles.gloablMargin, flex: 1, marginTop: top + 20}}>
+    <View
+      style={{
+        ...styles.gloablMargin,
+      }}>
       <FlatList
         data={menuItems}
         renderItem={({item}) => <FlatListMenuItem menuItem={item} />}
         keyExtractor={item => item.name}
-        ListHeaderComponent={renderListHeader}
+        ListHeaderComponent={<ListHeader title="Menu Options" />}
         ItemSeparatorComponent={itemSeparator}
       />
     </View>

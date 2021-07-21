@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {styles101} from '../screens/Animation101Screen';
+import {colors} from '../themes/appTheme';
 
 interface Props {
   animation: () => void;
@@ -14,9 +15,9 @@ interface Props {
 const ButtonAnimation = ({
   animation,
   textBtn,
-  color = '#293241',
-  backgroundC = '#ee6c4d',
-  borderC = '#293241',
+  color = colors.blueDark,
+  backgroundC = colors.orange,
+  borderC = colors.blueDark,
 }: Props) => {
   return (
     <>
