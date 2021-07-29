@@ -4,6 +4,7 @@ import {MenuItem} from '../interfaces/flatListInterface';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
+import {colors} from '../themes/appTheme';
 
 interface Props {
   menuItem: MenuItem;
@@ -21,7 +22,7 @@ const FlatListMenuItem = ({menuItem}: Props) => {
           <Icon
             name={menuItem.icon}
             size={30}
-            color="#293241"
+            color={colors.orange}
             style={styles.icon}
           />
           <Text style={styles.textOption}>{menuItem.name}</Text>
@@ -31,7 +32,7 @@ const FlatListMenuItem = ({menuItem}: Props) => {
           <Icon
             name="chevron-forward-outline"
             size={30}
-            color="#293241"
+            color={colors.orange}
             style={styles.icon}
           />
         </View>
@@ -57,9 +58,8 @@ const styles = StyleSheet.create({
   },
 
   textOption: {
-    color: '#ee6c4d',
+    color: '#FFFFFF',
     fontSize: 18,
-    fontWeight: 'bold',
   },
 });
 

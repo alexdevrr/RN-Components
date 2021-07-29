@@ -1,27 +1,71 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import ListHeader from '../components/ListHeader';
 import CustomSwitch from '../components/CustomSwitch';
 
 const Animation103Screen = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(!isEnabled);
+  const [state, setState] = useState({
+    isActive: false,
+    isHungry: false,
+    isHappy: true,
+  });
+
+  const {isActive, isHungry, isHappy} = state;
+
+  const onChange = (value: boolean, field: string) => {
+    setState({
+      ...state,
+      [field]: value,
+    });
+  };
 
   return (
-    <>
+    <View style={styles.container}>
       <ListHeader title="Switch Options" />
-      <View style={styles.container}>
-        <CustomSwitch isEnabled={isEnabled} toggleSwitch={toggleSwitch} />
+
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text style={styles.textSwitches}>isActive</Text>
+        <CustomSwitch
+          isOn={isActive}
+          onChange={value => onChange(value, 'isActive')}
+        />
       </View>
-    </>
+
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text style={styles.textSwitches}>isHungry</Text>
+        <CustomSwitch
+          isOn={isHungry}
+          onChange={value => onChange(value, 'isHungry')}
+        />
+      </View>
+
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <Text style={styles.textSwitches}>isHappy</Text>
+        <CustomSwitch
+          isOn={isHappy}
+          onChange={value => onChange(value, 'isHappy')}
+        />
+      </View>
+
+      <Text style={styles.textState}>{JSON.stringify(state, null, 3)}</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginHorizontal: 20,
+  },
+
+  textState: {
+    fontSize: 24,
+    marginTop: 20,
+    color: '#FFFFFF',
+  },
+
+  textSwitches: {
+    fontSize: 25,
+    color: '#FFFFFF',
   },
 });
 

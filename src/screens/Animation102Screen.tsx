@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
 
   blueDarkBox: {
-    backgroundColor: colors.blueDark,
+    backgroundColor: '#FFFFFF',
     width: 150,
     height: 150,
     borderRadius: 10,

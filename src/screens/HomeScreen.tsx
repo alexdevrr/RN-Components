@@ -5,20 +5,9 @@ import FlatListMenuItem from '../components/FlatListMenuItem';
 import {menuItems} from '../data/menuItem';
 import ListHeader from '../components/ListHeader';
 import {styles} from '../themes/appTheme';
+import ItemSeparator from '../components/ItemSeparation';
 
 const HomeScreen = () => {
-  const itemSeparator = () => {
-    return (
-      <View
-        style={{
-          borderBottomWidth: 3,
-          marginVertical: 7,
-          borderColor: '#293241',
-        }}
-      />
-    );
-  };
-
   return (
     <View
       style={{
@@ -29,7 +18,7 @@ const HomeScreen = () => {
         renderItem={({item}) => <FlatListMenuItem menuItem={item} />}
         keyExtractor={item => item.name}
         ListHeaderComponent={<ListHeader title="Menu Options" />}
-        ItemSeparatorComponent={itemSeparator}
+        ItemSeparatorComponent={() => <ItemSeparator />}
       />
     </View>
   );

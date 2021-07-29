@@ -66,7 +66,7 @@ export const styles101 = StyleSheet.create({
     height: 150,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: colors.blueDark,
+    borderColor: '#FFFFFF',
   },
 
   containerBtns: {

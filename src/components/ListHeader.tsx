@@ -5,14 +5,15 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 interface Props {
   title: string;
+  color?: string;
 }
 
-const ListHeader = ({title}: Props) => {
+const ListHeader = ({title, color = '#FFFFFF'}: Props) => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <View style={{...styles.gloablMargin, marginTop: top + 20}}>
-      <Text style={{...styles.title, marginBottom: 20}}>{title}</Text>
+    <View style={{marginTop: top + 20}}>
+      <Text style={{...styles.title, color, marginBottom: 20}}>{title}</Text>
     </View>
   );
 };
