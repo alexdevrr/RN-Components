@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Animated, Easing} from 'react-native';
+import {View, StyleSheet, Animated} from 'react-native';
 import useAnimations from '../hooks/useAnimations';
 import ButtonAnimation from '../components/ButtonAnimation';
 import {colors} from '../themes/appTheme';

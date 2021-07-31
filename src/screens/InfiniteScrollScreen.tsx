@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, FlatList, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, FlatList, ActivityIndicator} from 'react-native';
 import ListHeader from '../components/ListHeader';
 import {colors} from '../themes/appTheme';
 import FadeInImage from '../components/FadeInImage';
@@ -69,14 +69,5 @@ const InfiniteScrollScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  textItem: {
-    color: colors.orange,
-    fontSize: 22,
-    height: 150,
-    backgroundColor: 'purple',
-  },
-});
 
 export default InfiniteScrollScreen;

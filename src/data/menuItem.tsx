@@ -50,4 +50,16 @@ export const menuItems = [
     icon: 'infinite-outline',
     component: 'InfiniteScrollScreen',
   },
+
+  {
+    name: 'Slideshow',
+    icon: 'fast-food-outline',
+    component: 'SlideshowScreen',
+  },
+
+  {
+    name: 'ChangeTheme',
+    icon: 'contrast-outline',
+    component: 'ChangeThemeScreen',
+  },
 ];

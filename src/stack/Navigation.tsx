@@ -4,13 +4,14 @@ import HomeScreen from '../screens/HomeScreen';
 import Animation101Screen from '../screens/Animation101Screen';
 import Animation102Screen from '../screens/Animation102Screen';
 import SwitchScreen from '../screens/SwitchScreen';
-import {colors} from '../themes/appTheme';
 import AlertScreen from '../screens/AlertScreen';
 import TextInputScreen from '../screens/TextInputScreen';
 import PullToRefreshScreen from '../screens/PullToRefreshScreen';
 import SectionListScreen from '../screens/SectionListScreen';
 import ModalScreen from '../screens/ModalScreen';
 import InfiniteScrollScreen from '../screens/InfiniteScrollScreen';
+import SlideshowScreen from '../screens/SlideshowScreen';
+import ChangeThemeScreen from '../screens/ChangeThemeScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,7 @@ const Navigation = () => {
       screenOptions={{
         headerShown: false,
         cardStyle: {
-          backgroundColor: colors.blueDark,
+          // backgroundColor: colors.blueDark,
         },
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
@@ -39,6 +40,9 @@ const Navigation = () => {
         name="InfiniteScrollScreen"
         component={InfiniteScrollScreen}
       />
+
+      <Stack.Screen name="SlideshowScreen" component={SlideshowScreen} />
+      <Stack.Screen name="ChangeThemeScreen" component={ChangeThemeScreen} />
     </Stack.Navigator>
   );
 };

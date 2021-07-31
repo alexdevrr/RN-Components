@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {styles101} from '../screens/Animation101Screen';
 import {colors} from '../themes/appTheme';
@@ -20,17 +20,15 @@ const ButtonAnimation = ({
   borderC = colors.blueDark,
 }: Props) => {
   return (
-    <>
-      <TouchableOpacity
-        onPress={animation}
-        style={{
-          ...styles101.btnFadeIn,
-          backgroundColor: backgroundC,
-          borderColor: borderC,
-        }}>
-        <Text style={{...styles101.textBtn, color}}>{textBtn}</Text>
-      </TouchableOpacity>
-    </>
+    <TouchableOpacity
+      onPress={animation}
+      style={{
+        ...styles101.btnFadeIn,
+        backgroundColor: backgroundC,
+        borderColor: borderC,
+      }}>
+      <Text style={{...styles101.textBtn, color}}>{textBtn}</Text>
+    </TouchableOpacity>
   );
 };
 
