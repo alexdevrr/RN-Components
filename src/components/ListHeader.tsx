@@ -8,7 +8,7 @@ interface Props {
   color?: string;
 }
 
-const ListHeader = ({title, color = '#FFFFFF'}: Props) => {
+const ListHeader = ({title, color = '#ee6c4d'}: Props) => {
   const {top} = useSafeAreaInsets();
 
   return (

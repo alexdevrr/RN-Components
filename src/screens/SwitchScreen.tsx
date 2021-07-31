@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import ListHeader from '../components/ListHeader';
 import CustomSwitch from '../components/CustomSwitch';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 const Animation103Screen = () => {
+  const {theme} = useContext(ThemeContext);
+
   const [state, setState] = useState({
     isActive: false,
     isHungry: false,
@@ -24,7 +27,9 @@ const Animation103Screen = () => {
       <ListHeader title="Switch Options" />
 
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Text style={styles.textSwitches}>isActive</Text>
+        <Text style={{...styles.textSwitches, color: theme.colors.text}}>
+          isActive
+        </Text>
         <CustomSwitch
           isOn={isActive}
           onChange={value => onChange(value, 'isActive')}
@@ -32,7 +37,9 @@ const Animation103Screen = () => {
       </View>
 
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Text style={styles.textSwitches}>isHungry</Text>
+        <Text style={{...styles.textSwitches, color: theme.colors.text}}>
+          isHungry
+        </Text>
         <CustomSwitch
           isOn={isHungry}
           onChange={value => onChange(value, 'isHungry')}
@@ -40,7 +47,9 @@ const Animation103Screen = () => {
       </View>
 
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <Text style={styles.textSwitches}>isHappy</Text>
+        <Text style={{...styles.textSwitches, color: theme.colors.text}}>
+          isHappy
+        </Text>
         <CustomSwitch
           isOn={isHappy}
           onChange={value => onChange(value, 'isHappy')}

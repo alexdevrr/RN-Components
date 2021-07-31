@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {
   View,
   Text,
@@ -16,8 +16,11 @@ import {useForm} from '../hooks/useForm';
 import {colors} from '../themes/appTheme';
 
 import {styles as stylesGlobal} from '../themes/appTheme';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 const TextInputScreen = () => {
+  const {theme} = useContext(ThemeContext);
+
   const {onChange, statecurrent, isSuscribed} = useForm({
     name: '',
     email: '',
@@ -36,37 +39,37 @@ const TextInputScreen = () => {
           <View style={stylesGlobal.gloablMargin}>
             <ListHeader title="TextInputs Options" />
             <TextInput
-              style={styles.input}
+              style={{...styles.input, color: theme.colors.text}}
               onChangeText={value => onChange(value, 'name')}
               placeholder="Type your name"
-              placeholderTextColor="#C1C1C1"
+              placeholderTextColor={theme.colors.primary}
               autoCorrect={false}
               autoCapitalize="words"
             />
             <TextInput
-              style={styles.input}
+              style={{...styles.input, color: theme.colors.text}}
               onChangeText={value => onChange(value, 'email')}
               placeholder="Type your email"
-              placeholderTextColor="#C1C1C1"
+              placeholderTextColor={theme.colors.primary}
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="email-address"
             />
             <TextInput
-              style={styles.input}
+              style={{...styles.input, color: theme.colors.text}}
               onChangeText={value => onChange(value, 'phone')}
               placeholder="Type your phone"
-              placeholderTextColor="#C1C1C1"
+              placeholderTextColor={theme.colors.primary}
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="numeric"
             />
 
             <TextInput
-              style={styles.input}
+              style={{...styles.input, color: theme.colors.text}}
               onChangeText={value => onChange(value, 'password')}
               placeholder="Type your password"
-              placeholderTextColor="#C1C1C1"
+              placeholderTextColor={theme.colors.primary}
               autoCorrect={false}
               autoCapitalize="none"
               // It used so that the password is not displayed
@@ -89,7 +92,7 @@ const TextInputScreen = () => {
               />
             </View>
 
-            <Text style={{color: 'white', fontSize: 30}}>
+            <Text style={{color: theme.colors.text, fontSize: 30}}>
               {JSON.stringify(statecurrent, null, 5)}
             </Text>
             {/* Finish global margin */}
@@ -107,7 +110,6 @@ const styles = StyleSheet.create({
     borderColor: colors.orange,
     height: 40,
     borderRadius: 5,
-    color: '#FFFFFF',
     marginVertical: 10,
   },
 });

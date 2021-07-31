@@ -1,37 +1,34 @@
 import React, {createContext, useReducer} from 'react';
-import {themeReducer} from './ThemeReducer';
-
-export interface ThemeState {
-  isLoggedIn: boolean;
-  darkTheme: boolean;
-  ligthTheme: boolean;
-}
-
-export const themeInitialState: ThemeState = {
-  isLoggedIn: false,
-  darkTheme: false,
-  ligthTheme: true,
-};
+import {themeReducer, ThemeState, lightTheme} from './ThemeReducer';
 
 export interface ThemeContextProps {
-  themeState: ThemeState;
-  changeTheme: (estado: boolean) => void;
+  theme: ThemeState;
+  setDarkTheme: () => void;
+  setLightTheme: () => void;
 }
 
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 const ThemeProvider = ({children}: any) => {
-  const [themeState, dispatch] = useReducer(themeReducer, themeInitialState);
+  // TODO: leer el tema global...
+  const [theme, dispatch] = useReducer(themeReducer, lightTheme);
 
-  const changeTheme = (estado: boolean) => {
-    dispatch({type: 'changeTheme', payload: estado});
+  const setDarkTheme = () => {
+    dispatch({type: 'set_dark_theme'});
+    console.log('Dark theme press');
+  };
+
+  const setLightTheme = () => {
+    dispatch({type: 'set_light_theme'});
+    console.log('Ligth theme press');
   };
 
   return (
     <ThemeContext.Provider
       value={{
-        themeState,
-        changeTheme,
+        theme,
+        setDarkTheme,
+        setLightTheme,
       }}>
       {children}
     </ThemeContext.Provider>

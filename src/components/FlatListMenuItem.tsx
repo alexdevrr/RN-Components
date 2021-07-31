@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {MenuItem} from '../interfaces/flatListInterface';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/core';
 import {colors} from '../themes/appTheme';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 interface Props {
   menuItem: MenuItem;
 }
 
 const FlatListMenuItem = ({menuItem}: Props) => {
+  const {theme} = useContext(ThemeContext);
+
   const navigation = useNavigation();
 
   return (
@@ -22,10 +25,12 @@ const FlatListMenuItem = ({menuItem}: Props) => {
           <Icon
             name={menuItem.icon}
             size={30}
-            color={colors.orange}
+            color={theme.colors.primary}
             style={styles.icon}
           />
-          <Text style={styles.textOption}>{menuItem.name}</Text>
+          <Text style={{fontSize: 17, color: theme.colors.text}}>
+            {menuItem.name}
+          </Text>
         </View>
 
         <View>

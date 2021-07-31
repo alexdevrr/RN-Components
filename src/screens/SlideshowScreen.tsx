@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import useAnimations from '../hooks/useAnimations';
 import {StackScreenProps} from '@react-navigation/stack';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 // Del Navigation.tsx
 interface Props extends StackScreenProps<any, any> {}
@@ -31,6 +32,8 @@ interface Slide {
 const {width: totalWidth} = Dimensions.get('screen');
 
 const SlideshowScreen = ({navigation}: Props) => {
+  const {theme} = useContext(ThemeContext);
+
   const [activeSlide, setActiveSlide] = useState(0);
 
   const {fadeIn, opacity} = useAnimations();
@@ -41,7 +44,7 @@ const SlideshowScreen = ({navigation}: Props) => {
     return (
       <View
         style={{
-          backgroundColor: '#FFFFFF',
+          backgroundColor: theme.colors.background,
           flex: 1,
           justifyContent: 'center',
           padding: 40,
@@ -53,8 +56,12 @@ const SlideshowScreen = ({navigation}: Props) => {
         />
 
         <View>
-          <Text style={styles.textTitle}>{item.title}</Text>
-          <Text style={styles.textDesc}>{item.desc}</Text>
+          <Text style={{...styles.textTitle, color: theme.colors.primary}}>
+            {item.title}
+          </Text>
+          <Text style={{...styles.textDesc, color: theme.colors.text}}>
+            {item.desc}
+          </Text>
         </View>
       </View>
     );
@@ -64,10 +71,12 @@ const SlideshowScreen = ({navigation}: Props) => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: theme.colors.background,
         paddingTop: 20,
       }}>
-      <ListHeader title="Slideshow" />
+      <View style={{marginHorizontal: 20}}>
+        <ListHeader title="Slideshow" />
+      </View>
       <Carousel
         data={items}
         renderItem={({item}: any) => renderItem(item)}
@@ -97,7 +106,7 @@ const SlideshowScreen = ({navigation}: Props) => {
         <Pagination
           dotsLength={items.length}
           activeDotIndex={activeSlide}
-          containerStyle={{backgroundColor: '#FFFFFF'}}
+          containerStyle={{backgroundColor: theme.colors.background}}
           dotStyle={{
             width: 10,
             height: 10,
@@ -106,7 +115,7 @@ const SlideshowScreen = ({navigation}: Props) => {
             backgroundColor: colors.orange, // color bolita
           }}
           inactiveDotStyle={{
-            backgroundColor: colors.blueDark, // color bolita desact
+            backgroundColor: theme.colors.text, // color bolita desact
           }}
           inactiveDotOpacity={0.8}
           inactiveDotScale={0.6}
@@ -117,7 +126,10 @@ const SlideshowScreen = ({navigation}: Props) => {
             opacity,
           }}>
           <TouchableOpacity
-            style={styles.btnOrange}
+            style={{
+              ...styles.btnOrange,
+              backgroundColor: theme.colors.notification,
+            }}
             activeOpacity={0.8}
             onPress={() => {
               // solo se puede presionar si está activo
@@ -125,12 +137,12 @@ const SlideshowScreen = ({navigation}: Props) => {
                 navigation.navigate('HomeScreen');
               }
             }}>
-            <Text style={styles.textBtnOrange}>
+            <Text style={{...styles.textBtnOrange, color: theme.colors.border}}>
               Entrar
               <Icon
                 name="chevron-forward-outline"
                 size={20}
-                color={colors.orange}
+                color={theme.colors.border}
               />
             </Text>
           </TouchableOpacity>
@@ -158,7 +170,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.blueDark,
     width: 110,
     height: 50,
     borderRadius: 10,

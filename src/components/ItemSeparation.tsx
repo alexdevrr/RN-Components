@@ -10,7 +10,7 @@ interface Props {
 const ItemSeparator = ({
   borderBottomWidth = 2,
   marginVertical = 7,
-  borderColor = '#FFFFFF',
+  borderColor = 'red',
 }: Props) => {
   return (
     <View

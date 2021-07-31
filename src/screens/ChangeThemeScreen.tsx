@@ -5,7 +5,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 const ChangeThemeScreen = () => {
-  const {changeTheme, themeState} = useContext(ThemeContext);
+  const {setDarkTheme, setLightTheme} = useContext(ThemeContext);
 
   return (
     <View style={{flex: 1}}>
@@ -14,15 +14,16 @@ const ChangeThemeScreen = () => {
         <TouchableOpacity
           style={styles.btnDarkWhite}
           activeOpacity={0.8}
-          onPress={() => changeTheme(!themeState.isLoggedIn)}>
-          <Text style={{color: '#000000', fontSize: 16}}>Dark/Litght</Text>
+          onPress={setDarkTheme}>
+          <Text style={{color: '#000000', fontSize: 16}}>Dark</Text>
         </TouchableOpacity>
 
-        {themeState.isLoggedIn && (
-          <Text style={{color: '#FFFFFF', fontSize: 16}}>
-            You are logged in
-          </Text>
-        )}
+        <TouchableOpacity
+          style={styles.btnDarkWhite}
+          activeOpacity={0.8}
+          onPress={setLightTheme}>
+          <Text style={{color: '#000000', fontSize: 16}}>Litght</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: '#000000',
     marginRight: 10,
+    marginBottom: 10,
   },
 });
 
