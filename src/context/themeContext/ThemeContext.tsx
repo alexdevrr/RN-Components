@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useReducer} from 'react';
-import {Appearance, AppState, useColorScheme} from 'react-native';
+import {Appearance, AppState} from 'react-native';
 import {themeReducer, ThemeState, lightTheme, darkTheme} from './ThemeReducer';
 
 export interface ThemeContextProps {
@@ -28,6 +28,7 @@ const ThemeProvider = ({children}: any) => {
       }
     });
   }, []);
+  // TODO: Aquí termina el proceso para obtener el theme general del dispositivo
 
   // SOLO FUNCIONA EN IOS
   // useEffect(() => {
